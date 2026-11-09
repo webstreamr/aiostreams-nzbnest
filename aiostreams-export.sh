@@ -85,6 +85,46 @@ def yes: if . then "Yes" else null end;
 def pretty($m): . as $c | $m[$c // ""] // $c;
 def color: pretty({"bt709": "BT.709", "bt2020": "BT.2020", "bt2020nc": "BT.2020 non-constant",
   "bt470bg": "BT.601", "smpte170m": "BT.601", "smpte2084": "PQ", "arib-std-b67": "HLG"});
+# ISO 639 language codes to the English names MediaInfo uses.
+def language: pretty({
+  "afr": "Afrikaans", "alb": "Albanian", "sqi": "Albanian", "amh": "Amharic",
+  "grc": "Ancient Greek", "ara": "Arabic", "arm": "Armenian", "hye": "Armenian", "asm": "Assamese",
+  "ast": "Asturian", "aym": "Aymara", "aze": "Azerbaijani", "bak": "Bashkir", "baq": "Basque",
+  "eus": "Basque", "bel": "Belarusian", "ben": "Bengali", "bho": "Bhojpuri", "bos": "Bosnian",
+  "bre": "Breton", "bul": "Bulgarian", "bur": "Burmese", "mya": "Burmese", "yue": "Cantonese",
+  "cat": "Catalan", "ceb": "Cebuano", "che": "Chechen", "chi": "Chinese", "zho": "Chinese",
+  "cos": "Corsican", "hrv": "Croatian", "scr": "Croatian", "cze": "Czech", "ces": "Czech",
+  "dan": "Danish", "prs": "Dari", "div": "Dhivehi", "dut": "Dutch", "nld": "Dutch",
+  "dzo": "Dzongkha", "eng": "English", "epo": "Esperanto", "est": "Estonian", "fao": "Faroese",
+  "fij": "Fijian", "fil": "Filipino", "fin": "Finnish", "fre": "French", "fra": "French",
+  "ful": "Fulah", "glg": "Galician", "geo": "Georgian", "kat": "Georgian", "ger": "German",
+  "deu": "German", "gre": "Greek", "ell": "Greek", "kal": "Greenlandic", "grn": "Guarani",
+  "guj": "Gujarati", "hat": "Haitian", "hak": "Hakka", "hau": "Hausa", "haw": "Hawaiian",
+  "heb": "Hebrew", "hin": "Hindi", "hmn": "Hmong", "hun": "Hungarian", "ice": "Icelandic",
+  "isl": "Icelandic", "ibo": "Igbo", "ilo": "Iloko", "ind": "Indonesian", "ina": "Interlingua",
+  "iku": "Inuktitut", "gle": "Irish", "ita": "Italian", "jpn": "Japanese", "jav": "Javanese",
+  "kan": "Kannada", "kas": "Kashmiri", "kaz": "Kazakh", "khm": "Khmer", "kin": "Kinyarwanda",
+  "tlh": "Klingon", "kok": "Konkani", "kor": "Korean", "kur": "Kurdish", "kir": "Kyrgyz",
+  "lao": "Lao", "lat": "Latin", "lav": "Latvian", "lit": "Lithuanian", "ltz": "Luxembourgish",
+  "mac": "Macedonian", "mkd": "Macedonian", "mai": "Maithili", "mlg": "Malagasy", "may": "Malay",
+  "msa": "Malay", "mal": "Malayalam", "mlt": "Maltese", "cmn": "Mandarin", "mao": "Maori",
+  "mri": "Maori", "mar": "Marathi", "nan": "Min Nan", "mon": "Mongolian", "cnr": "Montenegrin",
+  "nav": "Navajo", "nep": "Nepali", "sme": "Northern Sami", "nor": "Norwegian",
+  "nob": "Norwegian Bokmal", "nno": "Norwegian Nynorsk", "oci": "Occitan", "ori": "Oriya",
+  "orm": "Oromo", "pus": "Pashto", "per": "Persian", "fas": "Persian", "pol": "Polish",
+  "por": "Portuguese", "pan": "Punjabi", "que": "Quechua", "rum": "Romanian", "ron": "Romanian",
+  "roh": "Romansh", "rom": "Romany", "rus": "Russian", "smo": "Samoan", "san": "Sanskrit",
+  "srd": "Sardinian", "gla": "Scottish Gaelic", "srp": "Serbian", "scc": "Serbian",
+  "hbs": "Serbo-Croatian", "sna": "Shona", "sgn": "Sign languages", "snd": "Sindhi",
+  "sin": "Sinhala", "slo": "Slovak", "slk": "Slovak", "slv": "Slovenian", "som": "Somali",
+  "sot": "Sotho", "spa": "Spanish", "sun": "Sundanese", "swa": "Swahili", "swe": "Swedish",
+  "syr": "Syriac", "tgl": "Tagalog", "tah": "Tahitian", "tgk": "Tajik", "tam": "Tamil",
+  "tat": "Tatar", "tel": "Telugu", "tha": "Thai", "tib": "Tibetan", "bod": "Tibetan",
+  "tir": "Tigrinya", "ton": "Tongan", "tsn": "Tswana", "tur": "Turkish", "tuk": "Turkmen",
+  "ukr": "Ukrainian", "urd": "Urdu", "uig": "Uyghur", "uzb": "Uzbek", "vie": "Vietnamese",
+  "wel": "Welsh", "cym": "Welsh", "fry": "Western Frisian", "wol": "Wolof", "xho": "Xhosa",
+  "yid": "Yiddish", "yor": "Yoruba", "zul": "Zulu",
+  "mul": "Multiple languages", "zxx": "No linguistic content"});
 # One "Key<padding>: value" line; nothing when the value is null or empty.
 def row($k; $v): $v | select(. != null and . != "") | "\($k + " " * (41 - ($k | length))): \(.)";
 
@@ -140,7 +180,7 @@ def subtitle: [
 
 def common: [
   row("Title"; .title),
-  row("Language"; .language | select(. != "und")),
+  row("Language"; .language | select(. != "und") | language),
   row("Default"; .default | yn),
   row("Forced"; .forced | yn),
   row("Hearing impaired"; .hearingImpaired | yes),

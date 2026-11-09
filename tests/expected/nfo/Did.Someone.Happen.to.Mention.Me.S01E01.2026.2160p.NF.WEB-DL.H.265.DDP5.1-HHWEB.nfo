@@ -22,7 +22,7 @@ Color range                              : Limited
 Color primaries                          : BT.709
 Transfer characteristics                 : BT.709
 Matrix coefficients                      : BT.709
-Language                                 : jpn
+Language                                 : Japanese
 Default                                  : Yes
 
 Audio #1
@@ -32,7 +32,7 @@ Channel(s)                               : 6 channels
 Channel layout                           : 5.1
 Sampling rate                            : 48 kHz
 Title                                    : 日本語 [Dolby Digital Plus 5.1]
-Language                                 : jpn
+Language                                 : Japanese
 Default                                  : Yes
 
 Audio #2
@@ -42,49 +42,49 @@ Channel(s)                               : 6 channels
 Channel layout                           : 5.1
 Sampling rate                            : 48 kHz
 Title                                    : English [Dolby Digital Plus 5.1]
-Language                                 : eng
+Language                                 : English
 
 Text #1
 Format                                   : SRT
 Title                                    : 中文（简体）
-Language                                 : chi
+Language                                 : Chinese
 Default                                  : Yes
 
 Text #2
 Format                                   : SRT
 Title                                    : 中文（繁體）
-Language                                 : chi
+Language                                 : Chinese
 
 Text #3
 Format                                   : SRT
 Title                                    : 日本語
-Language                                 : jpn
+Language                                 : Japanese
 
 Text #4
 Format                                   : SRT
 Title                                    : 日本語 [SDH]
-Language                                 : jpn
+Language                                 : Japanese
 Hearing impaired                         : Yes
 
 Text #5
 Format                                   : SRT
 Title                                    : English
-Language                                 : eng
+Language                                 : English
 
 Text #6
 Format                                   : SRT
 Title                                    : English
-Language                                 : eng
+Language                                 : English
 
 Text #7
 Format                                   : SRT
 Title                                    : Bahasa Malaysia
-Language                                 : may
+Language                                 : Malay
 
 Text #8
 Format                                   : SRT
 Title                                    : English [SDH]
-Language                                 : eng
+Language                                 : English
 Hearing impaired                         : Yes
 
 Generated from probed media info by aiostreams-export

@@ -31,7 +31,7 @@ Color range                              : Limited
 Color primaries                          : BT.2020
 Transfer characteristics                 : PQ
 Matrix coefficients                      : BT.2020 non-constant
-Language                                 : eng
+Language                                 : English
 Default                                  : Yes
 
 Audio
@@ -41,17 +41,17 @@ Bit rate                                 : 768 kb/s
 Channel(s)                               : 6 channels
 Channel layout                           : 5.1
 Sampling rate                            : 48 kHz
-Language                                 : eng
+Language                                 : English
 Default                                  : Yes
 
 Text #1
 Format                                   : SRT
-Language                                 : eng
+Language                                 : English
 
 Text #2
 Format                                   : SRT
 Title                                    : SDH
-Language                                 : eng
+Language                                 : English
 Hearing impaired                         : Yes
 
 Generated from probed media info by aiostreams-export

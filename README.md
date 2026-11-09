@@ -78,7 +78,7 @@ Format                                   : TrueHD
 Channel(s)                               : 8 channels
 Channel layout                           : 7.1
 Title                                    : Atmos
-Language                                 : eng
+Language                                 : English
 Default                                  : Yes
 
 Generated from probed media info by aiostreams-export

@@ -26,16 +26,16 @@ Format profile                           : DTS-HD MA
 Channel(s)                               : 6 channels
 Channel layout                           : 5.1
 Sampling rate                            : 48 kHz
-Language                                 : ger
+Language                                 : German
 Default                                  : Yes
 
 Text #1
 Format                                   : PGS
-Language                                 : eng
+Language                                 : English
 Default                                  : Yes
 
 Text #2
 Format                                   : PGS
-Language                                 : chi
+Language                                 : Chinese
 
 Generated from probed media info by aiostreams-export
