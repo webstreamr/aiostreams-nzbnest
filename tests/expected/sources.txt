@@ -1,0 +1,7 @@
+      3 api.nzbgeek.info/api
+      1 localhost:9696/6
+      1 localhost:9696/12
+      1 local
+      1 indexer.example/getnzb
+      1 indexer.example/api
+      1 aio.example/api

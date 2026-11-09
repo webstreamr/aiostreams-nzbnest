@@ -1,0 +1,67 @@
+{
+  "269322c0bf8eb774028ccbda4226bc0c80242416": [
+    {
+      "file": "Dark Matter (2024) S01E03 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv",
+      "size": 9375511342,
+      "info": {
+        "container": "matroska,webm", "duration": 2976.807, "size": 9375511342, "bitrate": 25196155, "chapters": true,
+        "tracks": [
+          { "index": 0, "codec": "hevc", "profile": "Main 10", "language": "eng", "bitrate": 24420923, "default": true, "original": true, "type": "video", "width": 3840, "height": 1920, "fps": 23.976023976023978, "avgFps": 23.976023976023978, "bitDepth": 10, "pixelFormat": "yuv420p10le", "colorPrimaries": "bt2020", "colorRange": "tv", "colorSpace": "bt2020nc", "colorTransfer": "smpte2084", "aspectRatio": "2:1", "level": 150, "refFrames": 1, "dvProfile": 8, "dvLevel": 6, "hdr10Plus": true },
+          { "index": 1, "codec": "eac3", "profile": "Dolby Digital Plus + Dolby Atmos", "language": "eng", "bitrate": 768000, "default": true, "original": true, "type": "audio", "channels": 6, "channelLayout": "5.1(side)", "sampleRate": 48000 },
+          { "index": 2, "codec": "subrip", "language": "eng", "bitrate": 54, "original": true, "type": "subtitle" },
+          { "index": 3, "codec": "subrip", "language": "eng", "title": "SDH", "bitrate": 63, "hearingImpaired": true, "original": true, "type": "subtitle" }
+        ]
+      }
+    }
+  ],
+  "021feae2c4e7c00ab536bb07d2004c68bb5eb69d": [
+    {
+      "file": "Did.Someone.Happen.to.Mention.Me.S01E01.2026.2160p.NF.WEB-DL.H.265.DDP5.1-HHWEB.mkv",
+      "size": 9485749242,
+      "info": {
+        "container": "matroska,webm", "duration": 3271.616, "size": 9485749242, "bitrate": 23195263, "chapters": true,
+        "tracks": [
+          { "index": 0, "codec": "hevc", "profile": "Main 10", "language": "jpn", "bitrate": 21912084, "default": true, "original": true, "type": "video", "width": 3840, "height": 2160, "fps": 24, "avgFps": 24, "bitDepth": 10, "pixelFormat": "yuv420p10le", "colorPrimaries": "bt709", "colorRange": "tv", "colorSpace": "bt709", "colorTransfer": "bt709", "aspectRatio": "16:9", "level": 153, "refFrames": 1 },
+          { "index": 1, "codec": "eac3", "language": "jpn", "title": "日本語 [Dolby Digital Plus 5.1]", "bitrate": 640000, "default": true, "original": true, "type": "audio", "channels": 6, "channelLayout": "5.1(side)", "sampleRate": 48000 },
+          { "index": 2, "codec": "eac3", "language": "eng", "title": "English [Dolby Digital Plus 5.1]", "bitrate": 640000, "dub": true, "type": "audio", "channels": 6, "channelLayout": "5.1(side)", "sampleRate": 48000 },
+          { "index": 3, "codec": "subrip", "language": "chi", "title": "中文（简体）", "bitrate": 57, "default": true, "dub": true, "type": "subtitle" },
+          { "index": 4, "codec": "subrip", "language": "chi", "title": "中文（繁體）", "bitrate": 58, "dub": true, "type": "subtitle" },
+          { "index": 5, "codec": "subrip", "language": "jpn", "title": "日本語", "bitrate": 80, "original": true, "type": "subtitle" },
+          { "index": 6, "codec": "subrip", "language": "jpn", "title": "日本語 [SDH]", "bitrate": 95, "hearingImpaired": true, "original": true, "type": "subtitle" },
+          { "index": 7, "codec": "subrip", "language": "eng", "title": "English", "bitrate": 63, "dub": true, "type": "subtitle" },
+          { "index": 8, "codec": "subrip", "language": "eng", "title": "English", "bitrate": 74, "dub": true, "type": "subtitle" },
+          { "index": 9, "codec": "subrip", "language": "may", "title": "Bahasa Malaysia", "bitrate": 64, "dub": true, "type": "subtitle" },
+          { "index": 10, "codec": "subrip", "language": "eng", "title": "English [SDH]", "bitrate": 83, "hearingImpaired": true, "dub": true, "type": "subtitle" }
+        ]
+      }
+    }
+  ],
+  "13adb24db2be8cca1bf1bf38de13f392067b1795": [
+    {
+      "file": "Late.Bloomers.2006.1080p.Blu-ray.Remux.AVC.DTS-HD.MA5.1-NY.mkv",
+      "size": 20297631383,
+      "info": {
+        "container": "matroska,webm", "duration": 5401.419, "size": 20297631383, "bitrate": 30062665, "chapters": true,
+        "tracks": [
+          { "index": 0, "codec": "h264", "profile": "High", "type": "video", "width": 1920, "height": 1080, "fps": 23.976023976023978, "avgFps": 23.976023976023978, "bitDepth": 8, "pixelFormat": "yuv420p", "colorRange": "tv", "aspectRatio": "16:9", "level": 41, "refFrames": 2, "interlaced": false },
+          { "index": 1, "codec": "dts", "profile": "DTS-HD MA", "language": "ger", "default": true, "type": "audio", "channels": 6, "channelLayout": "5.1(side)", "sampleRate": 48000 },
+          { "index": 2, "codec": "hdmv_pgs_subtitle", "language": "eng", "default": true, "type": "subtitle" },
+          { "index": 3, "codec": "hdmv_pgs_subtitle", "language": "chi", "type": "subtitle" }
+        ]
+      }
+    }
+  ],
+  "6ed4f9690962a1f2d14584e399639ae16d736910": [
+    {
+      "file": "Whos.Coming.For.Christmas.2026.720p.WEBRip.x264.AAC-[YTS.GG - YTS.BZ].mp4",
+      "size": 808415625,
+      "info": {
+        "container": "mov,mp4,m4a,3gp,3g2,mj2", "duration": 5040.096, "size": 808415625, "bitrate": 1283174, "chapters": false,
+        "tracks": [
+          { "index": 0, "codec": "h264", "profile": "High", "language": "und", "bitrate": 1150155, "default": true, "type": "video", "width": 1280, "height": 720, "fps": 23.976023976023978, "avgFps": 23.976023976023978, "bitDepth": 8, "pixelFormat": "yuv420p", "colorPrimaries": "bt709", "colorRange": "tv", "colorSpace": "bt709", "colorTransfer": "bt709", "aspectRatio": "16:9", "codecTag": "avc1", "level": 41, "refFrames": 4, "interlaced": false },
+          { "index": 1, "codec": "aac", "profile": "LC", "language": "und", "bitrate": 127563, "default": true, "type": "audio", "channels": 2, "channelLayout": "stereo", "sampleRate": 48000 }
+        ]
+      }
+    }
+  ]
+}

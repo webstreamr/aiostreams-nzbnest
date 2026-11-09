@@ -4,7 +4,8 @@
 #
 #   NZBNEST_KEY=... ./nzbnest-upload.sh <dir>
 #
-# DRY_RUN=1  print categories, upload nothing
+# DRY_RUN=1    print categories, upload nothing
+# NZBNEST_URL  API base, default https://nzbnest.com (tests point it at a mock)
 set -euo pipefail
 
 DIR="${1:?usage: nzbnest-upload.sh <dir>}"; DIR="${DIR%/}"
@@ -58,7 +59,7 @@ for f in "${files[@]}"; do
 
   resp="$(mktemp)"
   code="$(curl -sS -o "$resp" -w '%{http_code}' -X POST \
-    "https://nzbnest.com/v1/upload?apikey=$NZBNEST_KEY&cat=$category" "${form[@]}" || echo 000)"
+    "${NZBNEST_URL:-https://nzbnest.com}/v1/upload?apikey=$NZBNEST_KEY&cat=$category" "${form[@]}" || echo 000)"
 
   if [[ "$code" == 2* ]]; then
     rm -f "$f" ${nfo:+"$nfo"}

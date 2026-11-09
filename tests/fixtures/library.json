@@ -1,0 +1,98 @@
+[
+  {
+    "nzbHash": "269322c0bf8eb774028ccbda4226bc0c80242416",
+    "name": "Dark Matter (2024) S01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE)",
+    "nzbUrl": "https://aio.example/api/v1/proxy/u.dXNlcjpTRUNSRVRQQVNT.eyJ1cmwiOiJodHRwczovL2FwaS5uemJnZWVrLmluZm8vYXBpP3Q9Z2V0JmlkPTEmYXBpa2V5PVNFQ1JFVCIsImZpbGVuYW1lIjoiRGFyayBNYXR0ZXIgKDIwMjQpIFMwMSAoMjE2MHAgQVRWUCBXRUItREwgSHlicmlkIEgyNjUgRFYgSERSMTArIEREUCBBdG1vcyA1LjEgRW5nbGlzaCAtIEhPTkUpIiwidHlwZSI6Im56YiJ9/Dark.Matter",
+    "addedAt": "2026-11-08T20:30:40Z",
+    "probedFiles": 1,
+    "size": 89996024693,
+    "postedAt": 1731113914,
+    "status": "available",
+    "files": [
+      { "name": "Dark Matter (2024) S01E02 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "path": "Dark Matter (2024) S01E02 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "size": 10073059604, "category": "video" },
+      { "name": "Dark Matter (2024) S01E03 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "path": "Dark Matter (2024) S01E03 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "size": 9375511342, "category": "video" },
+      { "name": "Dark Matter (2024) S01E06 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "path": "Dark Matter (2024) S01E06 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "size": 10336023423, "category": "video" },
+      { "name": "Dark Matter (2024) S01E08 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "path": "Dark Matter (2024) S01E08 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "size": 8868055927, "category": "video" },
+      { "name": "Dark Matter (2024) S01E07 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "path": "Dark Matter (2024) S01E07 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "size": 9677680551, "category": "video" },
+      { "name": "Dark Matter (2024) S01E05 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "path": "Dark Matter (2024) S01E05 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "size": 10508751671, "category": "video" },
+      { "name": "Dark Matter (2024) S01E01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "path": "Dark Matter (2024) S01E01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "size": 8713837300, "category": "video" },
+      { "name": "Dark Matter (2024) S01E09 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "path": "Dark Matter (2024) S01E09 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "size": 11071775245, "category": "video" },
+      { "name": "Dark Matter (2024) S01E04 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "path": "Dark Matter (2024) S01E04 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv", "size": 11371329630, "category": "video" }
+    ]
+  },
+  {
+    "nzbHash": "021feae2c4e7c00ab536bb07d2004c68bb5eb69d",
+    "name": "Did.Someone.Happen.to.Mention.Me.S01E01.2026.2160p.NF.WEB-DL.H.265.DDP5.1-HHWEB",
+    "nzbUrl": "https://api.nzbgeek.info/api?t=get&id=3&apikey=SECRET",
+    "addedAt": "2026-11-04T21:36:12Z",
+    "probedFiles": 1,
+    "size": 9485749242,
+    "postedAt": 1793457014,
+    "status": "available",
+    "files": [
+      { "name": "Did.Someone.Happen.to.Mention.Me.S01E01.2026.2160p.NF.WEB-DL.H.265.DDP5.1-HHWEB.mkv", "path": "Did.Someone.Happen.to.Mention.Me.S01E01.2026.2160p.NF.WEB-DL.H.265.DDP5.1-HHWEB.mkv", "size": 9485749242, "category": "video" }
+    ]
+  },
+  {
+    "nzbHash": "13adb24db2be8cca1bf1bf38de13f392067b1795",
+    "name": "Late.Bloomers.2006.1080p.BluRay.Remux.AVC.DTS-HD.MA.5.1-NY",
+    "nzbUrl": "https://indexer.example/api?t=get&id=4&apikey=SECRET",
+    "addedAt": "2026-11-03T21:33:17Z",
+    "probedFiles": 1,
+    "size": 20297631383,
+    "postedAt": 1616197800,
+    "status": "available",
+    "files": [
+      { "name": "Late.Bloomers.2006.1080p.Blu-ray.Remux.AVC.DTS-HD.MA5.1-NY.mkv", "path": "Late.Bloomers.2006.1080p.Blu-ray.Remux.AVC.DTS-HD.MA5.1-NY.mkv", "size": 20297631383, "category": "video" }
+    ]
+  },
+  {
+    "nzbHash": "6ed4f9690962a1f2d14584e399639ae16d736910",
+    "name": "Whos Coming For Christmas-2026-720p-WEBRip-YTS.GG-YTS.BZ",
+    "nzbUrl": "http://localhost:9696/12/download?apikey=KEY&link=y",
+    "addedAt": "2026-11-03T18:37:52Z",
+    "probedFiles": 1,
+    "size": 808415625,
+    "postedAt": 1793676480,
+    "status": "available",
+    "files": [
+      { "name": "Whos.Coming.For.Christmas.2026.720p.WEBRip.x264.AAC-[YTS.GG - YTS.BZ].mp4", "path": null, "size": 808415625, "category": "video" }
+    ]
+  },
+  {
+    "nzbHash": "resident",
+    "name": "Resident.Evil.2026.1080p.MA.WEB-DL.H264.SDR.DDP.Atmos.5.1.English.--HONE.vol00-01",
+    "nzbUrl": "https://api.nzbgeek.info/api?t=get&id=2&apikey=SECRET",
+    "addedAt": "2026-11-03T11:03:48Z",
+    "probedFiles": 0
+  },
+  {
+    "nzbHash": "prowlarr",
+    "name": "Show.S01E01.1080p.WEB-DL-GRP",
+    "nzbUrl": "http://localhost:9696/6/download?apikey=KEY&link=x",
+    "addedAt": "2026-11-03T07:00:00Z",
+    "probedFiles": 0
+  },
+  {
+    "nzbHash": "frieren",
+    "name": "[SubsPlease] Frieren - 12 (1080p).nzb",
+    "nzbUrl": "local-nzb://frieren",
+    "addedAt": "2026-11-03T06:00:00Z",
+    "probedFiles": 0
+  },
+  {
+    "nzbHash": "encrypted",
+    "name": "Movie.2020.1080p.BluRay.x264-GRP",
+    "nzbUrl": "https://aio.example/api/v1/proxy/e.ENCRYPTED.ENCRYPTED/Movie",
+    "addedAt": "2026-11-03T05:00:00Z",
+    "probedFiles": 0
+  },
+  {
+    "nzbHash": "uncached",
+    "name": "Old.Movie.1999.DVDRip.XviD-GRP",
+    "nzbUrl": "https://indexer.example/getnzb/9?r=KEY",
+    "addedAt": "2026-11-03T04:00:00Z",
+    "probedFiles": 0,
+    "_cached": false
+  }
+]

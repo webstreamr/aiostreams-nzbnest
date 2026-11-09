@@ -1,0 +1,90 @@
+Release contents:
+  Did.Someone.Happen.to.Mention.Me.S01E01.2026.2160p.NF.WEB-DL.H.265.DDP5.1-HHWEB.mkv  (8.83 GiB)
+
+General
+Complete name                            : Did.Someone.Happen.to.Mention.Me.S01E01.2026.2160p.NF.WEB-DL.H.265.DDP5.1-HHWEB.mkv
+Format                                   : Matroska
+File size                                : 8.83 GiB
+Duration                                 : 54 min 31 s
+Overall bit rate                         : 23.2 Mb/s
+Chapters                                 : Yes
+
+Video
+Format                                   : HEVC
+Format profile                           : Main 10@L5.1
+Bit rate                                 : 21.9 Mb/s
+Width                                    : 3840 pixels
+Height                                   : 2160 pixels
+Display aspect ratio                     : 16:9
+Frame rate                               : 24 FPS
+Bit depth                                : 10 bits
+Color range                              : Limited
+Color primaries                          : BT.709
+Transfer characteristics                 : BT.709
+Matrix coefficients                      : BT.709
+Language                                 : jpn
+Default                                  : Yes
+
+Audio #1
+Format                                   : E-AC-3
+Bit rate                                 : 640 kb/s
+Channel(s)                               : 6 channels
+Channel layout                           : 5.1
+Sampling rate                            : 48 kHz
+Title                                    : 日本語 [Dolby Digital Plus 5.1]
+Language                                 : jpn
+Default                                  : Yes
+
+Audio #2
+Format                                   : E-AC-3
+Bit rate                                 : 640 kb/s
+Channel(s)                               : 6 channels
+Channel layout                           : 5.1
+Sampling rate                            : 48 kHz
+Title                                    : English [Dolby Digital Plus 5.1]
+Language                                 : eng
+
+Text #1
+Format                                   : SRT
+Title                                    : 中文（简体）
+Language                                 : chi
+Default                                  : Yes
+
+Text #2
+Format                                   : SRT
+Title                                    : 中文（繁體）
+Language                                 : chi
+
+Text #3
+Format                                   : SRT
+Title                                    : 日本語
+Language                                 : jpn
+
+Text #4
+Format                                   : SRT
+Title                                    : 日本語 [SDH]
+Language                                 : jpn
+Hearing impaired                         : Yes
+
+Text #5
+Format                                   : SRT
+Title                                    : English
+Language                                 : eng
+
+Text #6
+Format                                   : SRT
+Title                                    : English
+Language                                 : eng
+
+Text #7
+Format                                   : SRT
+Title                                    : Bahasa Malaysia
+Language                                 : may
+
+Text #8
+Format                                   : SRT
+Title                                    : English [SDH]
+Language                                 : eng
+Hearing impaired                         : Yes
+
+Generated from probed media info by aiostreams-export

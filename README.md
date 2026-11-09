@@ -1,6 +1,6 @@
 # aiostreams-nzbnest
 
-[![shellcheck](https://github.com/webstreamr/aiostreams-nzbnest/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/webstreamr/aiostreams-nzbnest/actions/workflows/shellcheck.yml)
+[![ci](https://github.com/webstreamr/aiostreams-nzbnest/actions/workflows/ci.yml/badge.svg)](https://github.com/webstreamr/aiostreams-nzbnest/actions/workflows/ci.yml)
 
 Two small, independent bash scripts:
 
@@ -51,20 +51,35 @@ A **source** is the NZB's URL as `host/path` without the query string (e.g. `api
 
 Use these filters to leave out indexers that don't allow sharing (see [Before uploading publicly](#before-uploading-publicly)).
 
-Example `.nfo`:
+Example `.nfo` (MediaInfo-style, from AIOStreams' ffprobe data):
 
 ```
-Release   : Dune.2021.2160p.UHD.BluRay.x265-GRP
-Size      : 20 GiB
-Posted    : 2023-11-14
-Files     : 1
+Release contents:
+  Dune.2021.2160p.UHD.BluRay.x265-GRP.mkv  (20 GiB)
 
-File      : Dune.2021.2160p.UHD.BluRay.x265-GRP.mkv
-Container : matroska, 2:35:51, 20 GiB, 18300 kb/s, chapters
-Video     : HEVC Main 10, 3840x1600, 23.976 fps, 10-bit, DV P8 / HDR10
-Audio 1   : eng, TRUEHD, 7.1, "Atmos" (default)
-Audio 2   : ger, AC3, 6ch, 640 kb/s
-Subtitles : eng [subrip] (forced), ger [hdmv_pgs_subtitle]
+General
+Complete name                            : Dune.2021.2160p.UHD.BluRay.x265-GRP.mkv
+Format                                   : Matroska
+File size                                : 20 GiB
+Duration                                 : 2 h 35 min
+Overall bit rate                         : 18.3 Mb/s
+
+Video
+Format                                   : HEVC
+Format profile                           : Main 10@L5.1
+HDR format                               : Dolby Vision, Profile 8 / HDR10
+Width                                    : 3840 pixels
+Height                                   : 1600 pixels
+Frame rate                               : 23.976 FPS
+Bit depth                                : 10 bits
+
+Audio
+Format                                   : TrueHD
+Channel(s)                               : 8 channels
+Channel layout                           : 7.1
+Title                                    : Atmos
+Language                                 : eng
+Default                                  : Yes
 
 Generated from probed media info by aiostreams-export
 ```
@@ -82,6 +97,7 @@ For `Release.Name.nzb` it also uploads `Release.Name.nfo` if that file exists in
 |---|---|---|
 | `NZBNEST_KEY` | required | Your NzbNest API key. |
 | `DRY_RUN` | unset | Print categories, upload nothing. |
+| `NZBNEST_URL` | `https://nzbnest.com` | API base URL; the tests point it at a mock. |
 
 Category detection uses the usual scene/P2P naming. A name with `S01E02`, `S01`, `1x02`, an air date, or a `[Group] Title - 12` anime pattern is TV; anything else is a movie. The subcategory is the first match, in this order:
 
@@ -103,6 +119,10 @@ For the first run, leave `SINCE_HOURS` unset to export the whole library.
 ## Before uploading publicly
 
 Check the rules of every indexer your NZBs come from and follow them. Many indexers don't allow their NZBs to be shared or re-uploaded elsewhere. That's what `INCLUDE_SOURCES` and `EXCLUDE_SOURCES` are for: run `LIST_SOURCES=1 AIOS_URL=... AIOS_USER=... AIOS_PASS=... ./aiostreams-export.sh` to see where your NZBs come from, then exclude every indexer that doesn't allow sharing, or include only the ones that do.
+
+## Tests
+
+`tests/run.sh` runs both scripts against a mock AIOStreams/NzbNest server (`tests/mock_server.py`, Python standard library only) using the fixtures in `tests/fixtures/`, and diffs the output with `tests/expected/`. If you change the output on purpose, update the matching file in `tests/expected/`.
 
 ## License
 

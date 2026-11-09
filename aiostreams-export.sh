@@ -32,7 +32,7 @@ api() { curl -fsS -b "$JAR" "$BASE/$1"; }
 
 # One line per entry, newest first. Fields are \x1f-separated because read
 # collapses empty tab-separated fields: hash, release, url, added (epoch),
-# source, probed file count, {size, postedAt} JSON.
+# source, probed file count, {files} JSON.
 # unproxy: an AIOStreams proxy URL's upstream URL, read from the base64url JSON
 # in /proxy/u.<auth>.<data>; undecodable proxy URLs are cut to .../proxy.
 # shellcheck disable=SC2016  # jq variables, not shell
@@ -42,14 +42,15 @@ def unproxy: (try (capture("/proxy/u\\.[^./]+\\.(?<d>[^./]+)").d
   | @base64d | fromjson | .url | strings)) // sub("/proxy/.*$"; "/proxy");
 .data.entries[] | (.nzbUrl // "") as $u | [
   .nzbHash,
-  ((.name // .nzbHash) | sub("\\.nzb$"; ""; "i")
+  ((.name // .nzbHash)
+    | sub("(\\.(vol[0-9]+[+-][0-9]+|part[0-9]+|par2|rar|r[0-9]{2}|7z|zip|nzb))+$"; ""; "i")
     | gsub("[[:cntrl:]/\\\\:*?\"<>|]"; "_") | .[0:200]),
   $u,
   (.addedAt | sub("\\.[0-9]+Z$"; "Z") | fromdateiso8601),
   (if $u == "" then "none" elif $u | startswith("local-nzb://") then "local"
    else $u | unproxy | sub("\\?.*$"; "") | sub("^[a-zA-Z]+://"; "") end),
   (.probedFiles // 0),
-  ({size, postedAt} | tojson)
+  ({files: [(.files // [])[] | {name: (.path // .name), size}]} | tojson)
 ] | map(tostring) | join("\u001f")'
 
 # Rows down to CUTOFF, page by page.
@@ -67,57 +68,99 @@ rows() {
   done
 }
 
+# MediaInfo-style report from AIOStreams' ffprobe records.
 # shellcheck disable=SC2016  # jq variables, not shell
 NFO_JQ='
-def pad2: tostring | if length < 2 then "0" + . else . end;
-def human: if . == null then "?"
-  elif . >= 1099511627776 then "\(. / 1099511627776 * 100 | round / 100) TiB"
+def size: if . == null then null
   elif . >= 1073741824 then "\(. / 1073741824 * 100 | round / 100) GiB"
   elif . >= 1048576 then "\(. / 1048576 * 10 | round / 10) MiB"
-  else "\(. / 1024 | round) KiB" end;
-def dur: if . == null then "?" else floor as $s
-  | "\($s / 3600 | floor):\(($s % 3600) / 60 | floor | pad2):\($s % 60 | pad2)" end;
-def kbps: if . == null then empty else "\(. / 1000 | round) kb/s" end;
-def codec: ((.codec // "?") | ascii_upcase) + (if .profile then " " + .profile else "" end);
-def lang: .language // "und";
-def flags: [ (if .default then "default" else empty end),
-             (if .forced then "forced" else empty end),
-             (if .hearingImpaired then "SDH" else empty end),
-             (if .commentary then "commentary" else empty end) ]
-  | if length > 0 then " (" + join(", ") + ")" else "" end;
-def hdr: [ (if .dvProfile then "DV P\(.dvProfile)" else empty end),
-           (if .hdr10Plus then "HDR10+" elif .colorTransfer == "smpte2084" then "HDR10" else empty end),
-           (if .colorTransfer == "arib-std-b67" then "HLG" else empty end),
-           ((.hdr // [])[]) ] | unique | join(" / ");
-def video: [ codec,
-             (if .width then "\(.width)x\(.height)" else empty end),
-             ((.avgFps // .fps) | if . then "\(. * 1000 | round / 1000) fps" else empty end),
-             (if .bitDepth then "\(.bitDepth)-bit" else empty end),
-             (hdr | select(length > 0)),
-             (.bitrate | kbps) ] | join(", ");
-def audio: ([ lang, codec,
-              (.channelLayout // (if .channels then "\(.channels)ch" else empty end)),
-              (.bitrate | kbps),
-              (if .title then "\"\(.title)\"" else empty end) ] | join(", ")) + flags;
-def subtitle: lang + (if .codec then " [\(.codec)]" else "" end)
-  + (if .title then " \"\(.title)\"" else "" end) + flags;
+  else "\(. / 1024 * 10 | round / 10) KiB" end;
+def dur: if . == null then null else floor as $s
+  | if $s >= 3600 then "\($s / 3600 | floor) h \(($s % 3600) / 60 | floor) min"
+    elif $s >= 60 then "\($s / 60 | floor) min \($s % 60) s" else "\($s) s" end end;
+def rate: if . == null then null elif . >= 1000000 then "\(. / 100000 | round / 10) Mb/s"
+  else "\(. / 1000 | round) kb/s" end;
+def yn: if . == null then null elif . then "Yes" else "No" end;
+def yes: if . then "Yes" else null end;
+def pretty($m): . as $c | $m[$c // ""] // $c;
+def color: pretty({"bt709": "BT.709", "bt2020": "BT.2020", "bt2020nc": "BT.2020 non-constant",
+  "bt470bg": "BT.601", "smpte170m": "BT.601", "smpte2084": "PQ", "arib-std-b67": "HLG"});
+# One "Key<padding>: value" line; nothing when the value is null or empty.
+def row($k; $v): $v | select(. != null and . != "") | "\($k + " " * (41 - ($k | length))): \(.)";
 
-"Release   : \($release)",
-"Size      : \($meta.size | human)",
-(if $meta.postedAt then "Posted    : \($meta.postedAt | todate | .[0:10])" else empty end),
-"Files     : \($files | length)",
-"",
+def general: [
+  "General",
+  row("Complete name"; .file),
+  row("Format"; .info.container | if . == null then null
+    elif test("matroska") then "Matroska" elif test("mp4") then "MPEG-4"
+    elif test("mpegts") then "MPEG-TS" elif test("avi") then "AVI" else . end),
+  row("File size"; (.size // .info.size) | size),
+  row("Duration"; .info.duration | dur),
+  row("Overall bit rate"; .info.bitrate | rate),
+  row("Chapters"; .info.chapters | yes) ];
+
+def video: . as $v | [
+  row("Format"; .codec | pretty({"h264": "AVC", "hevc": "HEVC", "av1": "AV1", "vp9": "VP9",
+    "mpeg2video": "MPEG Video", "mpeg4": "MPEG-4 Visual", "vc1": "VC-1"})),
+  row("Format profile"; .profile | if . == null then null else . + (
+    if ($v.level // 0) <= 0 then "" elif $v.codec == "h264" then "@L\($v.level / 10)"
+    elif $v.codec == "hevc" then "@L\($v.level / 30 * 10 | round / 10)" else "" end) end),
+  row("HDR format"; [ (if .dvProfile then "Dolby Vision, Profile \(.dvProfile)" else empty end),
+    (if .hdr10Plus then "HDR10+" elif .colorTransfer == "smpte2084" then "HDR10" else empty end),
+    (if .colorTransfer == "arib-std-b67" then "HLG" else empty end),
+    ((.hdr // [])[]) ] | unique | join(" / ")),
+  row("Bit rate"; .bitrate | rate),
+  row("Width"; .width | if . then "\(.) pixels" else null end),
+  row("Height"; .height | if . then "\(.) pixels" else null end),
+  # ffprobe gives "479:200"; MediaInfo writes that as "2.40:1".
+  row("Display aspect ratio"; .aspectRatio | if . == null or . == "16:9" or . == "4:3" then .
+    else split(":") | map(tonumber) | .[0] / .[1] * 100 | round
+      | "\(. / 100 | floor).\(. % 100 | tostring | if length < 2 then "0" + . else . end):1" end),
+  row("Frame rate"; (.avgFps // .fps) | if . then "\(. * 1000 | round / 1000) FPS" else null end),
+  row("Bit depth"; .bitDepth | if . then "\(.) bits" else null end),
+  row("Scan type"; .interlaced | if . == null then null elif . then "Interlaced" else "Progressive" end),
+  row("Color range"; .colorRange | pretty({"tv": "Limited", "pc": "Full"})),
+  row("Color primaries"; .colorPrimaries | color),
+  row("Transfer characteristics"; .colorTransfer | color),
+  row("Matrix coefficients"; .colorSpace | color) ];
+
+def audio: [
+  row("Format"; .codec | pretty({"eac3": "E-AC-3", "ac3": "AC-3", "truehd": "TrueHD", "dts": "DTS",
+    "aac": "AAC", "flac": "FLAC", "opus": "Opus", "mp3": "MPEG Audio", "vorbis": "Vorbis"})),
+  row("Format profile"; .profile),
+  row("Bit rate"; .bitrate | rate),
+  row("Channel(s)"; .channels | if . then "\(.) channels" else null end),
+  row("Channel layout"; .channelLayout | if . then sub("\\(side\\)$"; "")
+    | pretty({"stereo": "2.0", "mono": "1.0"}) else null end),
+  row("Sampling rate"; .sampleRate | if . then "\(. / 100 | round / 10) kHz" else null end) ];
+
+def subtitle: [
+  row("Format"; .codec | pretty({"subrip": "SRT", "ass": "ASS", "ssa": "SSA", "webvtt": "WebVTT",
+    "hdmv_pgs_subtitle": "PGS", "dvd_subtitle": "VobSub", "mov_text": "Timed Text"})) ];
+
+def common: [
+  row("Title"; .title),
+  row("Language"; .language | select(. != "und")),
+  row("Default"; .default | yn),
+  row("Forced"; .forced | yn),
+  row("Hearing impaired"; .hearingImpaired | yes),
+  row("Commentary"; .commentary | yes) ];
+
+def tracks($type; $title; f):
+  (.info.tracks | map(select(.type == $type))) as $ts
+  | $ts | to_entries[] | .key as $i | .value as $v
+  | ["", if ($ts | length) > 1 then "\($title) #\($i + 1)" else $title end]
+    + ($v | f) + ($v | common) | .[];
+
+"Release contents:",
+(if ($meta.files | length) > 0 then $meta.files else $files | map({name: .file, size}) end
+  | sort_by(.name)[] | "  \(.name)" + (.size | size | if . then "  (\(.))" else "" end)),
 ($files | sort_by(.file)[] |
-  "File      : \(.file)",
-  "Container : \(.info.container // "?"), \(.info.duration | dur), \((.size // .info.size) | human)"
-    + (.info.bitrate | if . then ", \(kbps)" else "" end)
-    + (if .info.chapters then ", chapters" else "" end),
-  (.info.tracks | map(select(.type == "video"))[] | "Video     : " + video),
-  (.info.tracks | map(select(.type == "audio")) | to_entries[]
-    | "Audio \(.key + 1 | tostring | . + "   " | .[0:3]) : " + (.value | audio)),
-  (.info.tracks | map(select(.type == "subtitle"))
-    | if length > 0 then "Subtitles : " + (map(subtitle) | join(", ")) else empty end),
-  ""),
+  "", (general | .[]),
+  tracks("video"; "Video"; video),
+  tracks("audio"; "Audio"; audio),
+  tracks("subtitle"; "Text"; subtitle)),
+"",
 "Generated from probed media info by aiostreams-export"'
 
 # True if $1 contains any item of the comma list $2, ignoring case.

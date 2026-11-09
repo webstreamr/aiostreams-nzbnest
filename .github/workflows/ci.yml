@@ -1,4 +1,4 @@
-name: shellcheck
+name: ci
 
 on:
   push:
@@ -8,8 +8,9 @@ permissions:
   contents: read
 
 jobs:
-  shellcheck:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: shellcheck -s bash *.sh
+      - run: shellcheck -s bash *.sh tests/*.sh
+      - run: tests/run.sh
