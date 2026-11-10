@@ -192,6 +192,8 @@ def tracks($type; $title; f):
   | ["", if ($ts | length) > 1 then "\($title) #\($i + 1)" else $title end]
     + ($v | f) + ($v | common) | .[];
 
+"Release name: \($release)",
+"",
 "Release contents:",
 (if ($meta.files | length) > 0 then $meta.files else $files | map({name: .file, size}) end
   | sort_by(.name)[] | "  \(.name)" + (.size | size | if . then "  (\(.))" else "" end)),

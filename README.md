@@ -54,6 +54,8 @@ Use these filters to leave out indexers that don't allow sharing (see [Before up
 Example `.nfo` (MediaInfo-style, from AIOStreams' ffprobe data):
 
 ```
+Release name: Dune.2021.2160p.UHD.BluRay.x265-GRP
+
 Release contents:
   Dune.2021.2160p.UHD.BluRay.x265-GRP.mkv  (20 GiB)
 
