@@ -156,7 +156,9 @@ def video: . as $v | [
   row("Display aspect ratio"; .aspectRatio | if . == null or . == "16:9" or . == "4:3" then .
     else split(":") | map(tonumber) | .[0] / .[1] * 100 | round
       | "\(. / 100 | floor).\(. % 100 | tostring | if length < 2 then "0" + . else . end):1" end),
-  row("Frame rate"; (.avgFps // .fps) | if . then "\(. * 1000 | round / 1000) FPS" else null end),
+  # MediaInfo always prints three decimals: "25.000 FPS", "23.976 FPS".
+  row("Frame rate"; (.avgFps // .fps) | if . then . * 1000 | round
+    | "\(. / 1000 | floor).\(. % 1000 | tostring | "00" + . | .[-3:]) FPS" else null end),
   row("Bit depth"; .bitDepth | if . then "\(.) bits" else null end),
   row("Scan type"; .interlaced | if . == null then null elif . then "Interlaced" else "Progressive" end),
   row("Color range"; .colorRange | pretty({"tv": "Limited", "pc": "Full"})),
