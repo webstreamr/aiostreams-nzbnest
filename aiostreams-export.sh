@@ -175,7 +175,7 @@ def audio: [
   row("Sampling rate"; .sampleRate | if . then "\(. / 100 | round / 10) kHz" else null end) ];
 
 def subtitle: [
-  row("Format"; .codec | pretty({"subrip": "SRT", "ass": "ASS", "ssa": "SSA", "webvtt": "WebVTT",
+  row("Format"; .codec | pretty({"subrip": "UTF-8", "ass": "ASS", "ssa": "SSA", "webvtt": "WebVTT",
     "hdmv_pgs_subtitle": "PGS", "dvd_subtitle": "VobSub", "mov_text": "Timed Text"})) ];
 
 def common: [

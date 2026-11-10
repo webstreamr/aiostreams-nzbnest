@@ -47,11 +47,11 @@ Language                                 : English
 Default                                  : Yes
 
 Text #1
-Format                                   : SRT
+Format                                   : UTF-8
 Language                                 : English
 
 Text #2
-Format                                   : SRT
+Format                                   : UTF-8
 Title                                    : SDH
 Language                                 : English
 Hearing impaired                         : Yes

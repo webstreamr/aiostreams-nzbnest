@@ -47,44 +47,44 @@ Title                                    : English [Dolby Digital Plus 5.1]
 Language                                 : English
 
 Text #1
-Format                                   : SRT
+Format                                   : UTF-8
 Title                                    : 中文（简体）
 Language                                 : Chinese
 Default                                  : Yes
 
 Text #2
-Format                                   : SRT
+Format                                   : UTF-8
 Title                                    : 中文（繁體）
 Language                                 : Chinese
 
 Text #3
-Format                                   : SRT
+Format                                   : UTF-8
 Title                                    : 日本語
 Language                                 : Japanese
 
 Text #4
-Format                                   : SRT
+Format                                   : UTF-8
 Title                                    : 日本語 [SDH]
 Language                                 : Japanese
 Hearing impaired                         : Yes
 
 Text #5
-Format                                   : SRT
+Format                                   : UTF-8
 Title                                    : English
 Language                                 : English
 
 Text #6
-Format                                   : SRT
+Format                                   : UTF-8
 Title                                    : English
 Language                                 : English
 
 Text #7
-Format                                   : SRT
+Format                                   : UTF-8
 Title                                    : Bahasa Malaysia
 Language                                 : Malay
 
 Text #8
-Format                                   : SRT
+Format                                   : UTF-8
 Title                                    : English [SDH]
 Language                                 : English
 Hearing impaired                         : Yes
