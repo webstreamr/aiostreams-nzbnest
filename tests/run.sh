@@ -14,6 +14,7 @@ check() { # <name> <expected file> <actual file>
 
 # AIOStreams data folder: every fixture NZB is cached unless "_cached": false.
 mkdir -p "$T/data/cache/grab-nzb" "$T/data/usenet-nzbs"
+cp -r fixtures/anime-database "$T/data/"
 jq -r '.[] | select(._cached != false) | .nzbUrl' fixtures/library.json | while read -r url; do
   case "$url" in
     local-nzb://*) echo '<nzb/>' >"$T/data/usenet-nzbs/${url#local-nzb://}.nzb" ;;
@@ -32,7 +33,7 @@ LIST_SOURCES=1 ../aiostreams-export.sh >"$T/sources.txt"
 check sources expected/sources.txt "$T/sources.txt"
 
 export EXCLUDE_SOURCES=localhost:9696/6
-{ ../aiostreams-export.sh "$T/out" 2>&1; ls "$T/out"; } >"$T/export.txt"
+{ ../aiostreams-export.sh "$T/out" 2>&1; ls "$T/out"; cat "$T/out/.anime-titles"; } >"$T/export.txt"
 check export expected/export.txt "$T/export.txt"
 for nfo in expected/nfo/*.nfo; do check "nfo $(basename "$nfo")" "$nfo" "$T/out/$(basename "$nfo")"; done
 

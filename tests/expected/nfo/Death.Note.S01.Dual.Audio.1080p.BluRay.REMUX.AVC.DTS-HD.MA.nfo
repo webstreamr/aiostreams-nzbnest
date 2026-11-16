@@ -1,0 +1,45 @@
+Release name: Death.Note.S01.Dual.Audio.1080p.BluRay.REMUX.AVC.DTS-HD.MA
+
+Release contents:
+  Death.Note.S01E01.Rebirth.1080p.BluRay.REMUX.AVC.DTS-HD.MA.mkv  (5 GiB)
+
+General
+Complete name                            : Death.Note.S01E01.Rebirth.1080p.BluRay.REMUX.AVC.DTS-HD.MA.mkv
+Format                                   : Matroska
+File size                                : 5 GiB
+Duration                                 : 23 min 1 s
+Overall bit rate                         : 31.1 Mb/s
+
+Video
+Format                                   : AVC
+Format profile                           : High@L4.1
+Width                                    : 1920 pixels
+Height                                   : 1080 pixels
+Display aspect ratio                     : 16:9
+Frame rate                               : 23.976 FPS
+Bit depth                                : 8 bits
+Default                                  : Yes
+
+Audio #1
+Format                                   : DTS
+Format profile                           : DTS-HD MA
+Channel(s)                               : 2 channels
+Channel layout                           : 2.0
+Sampling rate                            : 48 kHz
+Language                                 : Japanese
+Default                                  : Yes
+
+Audio #2
+Format                                   : DTS
+Format profile                           : DTS-HD MA
+Channel(s)                               : 6 channels
+Channel layout                           : 5.1
+Sampling rate                            : 48 kHz
+Language                                 : English
+
+Text
+Format                                   : PGS
+Language                                 : English
+Default                                  : Yes
+
+Generated from probed media info by aiostreams-export

@@ -81,6 +81,17 @@
     "probedFiles": 0
   },
   {
+    "nzbHash": "deathnote",
+    "name": "Death.Note.S01.Dual.Audio.1080p.BluRay.REMUX.AVC.DTS-HD.MA",
+    "nzbUrl": "local-nzb://deathnote",
+    "addedAt": "2026-11-02T06:00:00Z",
+    "probedFiles": 1,
+    "status": "available",
+    "files": [
+      { "name": "Death.Note.S01E01.Rebirth.1080p.BluRay.REMUX.AVC.DTS-HD.MA.mkv", "path": "Death.Note.S01E01.Rebirth.1080p.BluRay.REMUX.AVC.DTS-HD.MA.mkv", "size": 5368709120, "category": "video" }
+    ]
+  },
+  {
     "nzbHash": "encrypted",
     "name": "Movie.2020.1080p.BluRay.x264-GRP",
     "nzbUrl": "https://aio.example/api/v1/proxy/e.ENCRYPTED.ENCRYPTED/Movie",

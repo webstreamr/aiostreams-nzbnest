@@ -4,8 +4,9 @@
 #
 #   NZBNEST_KEY=... ./nzbnest-upload.sh <dir>
 #
-# DRY_RUN=1    print categories, upload nothing
-# NZBNEST_URL  API base, default https://nzbnest.com (tests point it at a mock)
+# DRY_RUN=1      print categories, upload nothing
+# NZBNEST_URL    API base, default https://nzbnest.com (tests point it at a mock)
+# ANIME_TITLES   anime title list, default <dir>/.anime-titles (from aiostreams-export.sh)
 set -euo pipefail
 
 DIR="${1:?usage: nzbnest-upload.sh <dir>}"; DIR="${DIR%/}"
@@ -15,12 +16,41 @@ DIR="${1:?usage: nzbnest-upload.sh <dir>}"; DIR="${DIR%/}"
 # Tests category_for's $name against an extended regex.
 has() { grep -Eiq "$1" <<<"$name"; }
 
-# Category for release name $1; the first matching rule wins.
+# Each line lowercased, apostrophes dropped, anything but ASCII letters and
+# digits as one space.
+normalize() {
+  sed "s/'//g; s/’//g" | LC_ALL=C tr '[:upper:]' '[:lower:]' | LC_ALL=C tr -cs 'a-z0-9\n' ' ' | sed -E 's/^ //; s/ $//'
+}
+
+TITLES="$(mktemp)"; trap 'rm -f "$TITLES"' EXIT
+ANIME_TITLES="${ANIME_TITLES:-$DIR/.anime-titles}"
+[ ! -s "$ANIME_TITLES" ] || normalize <"$ANIME_TITLES" | sort -u >"$TITLES"
+
+# Show title of release name $1: the part before the season, year or resolution.
+title_of() {
+  normalize <<<"$1" |
+    sed -E 's/(^| )(s[0-9]{1,2}(e[0-9]+)?|[0-9]{1,2}x[0-9]{2}|(19|20)[0-9]{2}|[0-9]{3,4}[pi]|season|complete)( |$).*//'
+}
+
+# True if the first audio track in .nfo $1 is Japanese, so added dubs don't count.
+japanese_audio() {
+  awk '{ sub(/\r$/, "") } /^Audio( #1)?$/ { a = 1 } /^$/ { a = 0 } a && /^Language +: Japanese$/ { f = 1 } END { exit !f }' "$1"
+}
+
+# True if release $1 has a listed anime title and .nfo $2 Japanese first audio;
+# the title alone also matches Friends (an anime synonym), the audio live action.
+anime() {
+  local title
+  [ -n "$2" ] && title="$(title_of "$1")" && [ -n "$title" ] &&
+    grep -qxF "$title" "$TITLES" && japanese_audio "$2"
+}
+
+# Category for release name $1 with optional .nfo $2; the first matching rule wins.
 category_for() {
   local name="$1"
   if has '(^|[._ -])S[0-9]{1,2}(E[0-9]{1,3})?([._ -]|$)|[._ ][0-9]{1,2}x[0-9]{2}[._ ]|(19|20)[0-9]{2}[._-][01][0-9][._-][0-3][0-9]' ||
      has '^\[[^]]+\].* - [0-9]{2,4}([^0-9]|$)'; then
-    if   has '^\[[^]]+\]';                       then echo 5070   # anime
+    if   has '^\[[^]]+\]' || anime "$name" "${2:-}"; then echo 5070
     elif has '2160p|[._ ]UHD[._ ]|[._ ]4K[._ ]'; then echo 5045
     elif has 'WEB[._ -]?(DL|Rip)|[._ ]WEB[._ -]'; then echo 5010
     elif has 'x265|h[._ ]?265|HEVC';             then echo 5090
@@ -47,7 +77,7 @@ ok=0 failed=0
 for f in "${files[@]}"; do
   release="${f##*/}"; release="${release%.*}"
   nfo="$DIR/$release.nfo"; [ -f "$nfo" ] || nfo=""
-  category="$(category_for "$release")"
+  category="$(category_for "$release" "$nfo")"
 
   if [ -n "${DRY_RUN:-}" ]; then
     echo "$category  $release${nfo:+  +nfo}"; continue

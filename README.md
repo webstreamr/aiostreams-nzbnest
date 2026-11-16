@@ -32,6 +32,7 @@ AIOS_URL=https://aio.example.com AIOS_USER=admin AIOS_PASS=secret AIOS_DATA=/srv
 - Only playable entries are exported (available, degraded or streaming); dead and not yet inspected ones are skipped.
 - For each entry it writes `<release>.nzb`, plus `<release>.nfo` if the release was probed (example below).
 - Exported hashes are recorded in `<out-dir>/.exported`, so each entry is exported once, even after you move or delete the files.
+- It also writes `<out-dir>/.anime-titles`, the titles and synonyms from AIOStreams' anime database (`$AIOS_DATA/anime-database/`), for the upload script's anime detection.
 
 | Variable | Default | Meaning |
 |---|---|---|
@@ -100,11 +101,14 @@ For `Release.Name.nzb` it also uploads `Release.Name.nfo` if that file exists in
 | `NZBNEST_KEY` | required | Your NzbNest API key. |
 | `DRY_RUN` | unset | Print categories, upload nothing. |
 | `NZBNEST_URL` | `https://nzbnest.com` | API base URL; the tests point it at a mock. |
+| `ANIME_TITLES` | `<dir>/.anime-titles` | Anime title list, one per line, for anime detection. |
 
 Category detection uses the usual scene/P2P naming. A name with `S01E02`, `S01`, `1x02`, an air date, or a `[Group] Title - 12` anime pattern is TV; anything else is a movie. The subcategory is the first match, in this order:
 
-- **TV:** Anime (names starting with `[Group]`), UHD, WEB-DL, x265, HD, otherwise TV (5000).
+- **TV:** Anime (see below), UHD, WEB-DL, x265, HD, otherwise TV (5000).
 - **Movies:** 3D, full BluRay/DVD disc, UHD, WEB-DL, x265, HD, SD, otherwise Movies (2000).
+
+TV is **Anime** if the name starts with `[Group]`, or if the show title (the name before the season, year or resolution) is in the anime title list and the `.nfo`'s first audio track is Japanese. Both are needed: the list also has titles like *Friends* or *Lost*, and Japanese audio alone would match live action. Live-action adaptations of anime can still match. Anime with English as the first audio track or without an `.nfo` needs the `[Group]` prefix.
 
 Foreign, Sport and Documentary aren't detected.
 

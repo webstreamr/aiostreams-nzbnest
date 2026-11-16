@@ -63,5 +63,20 @@
         ]
       }
     }
+  ],
+  "deathnote": [
+    {
+      "file": "Death.Note.S01E01.Rebirth.1080p.BluRay.REMUX.AVC.DTS-HD.MA.mkv",
+      "size": 5368709120,
+      "info": {
+        "container": "matroska,webm", "duration": 1381.5, "size": 5368709120, "bitrate": 31090000,
+        "tracks": [
+          { "index": 0, "codec": "h264", "profile": "High", "level": 41, "default": true, "type": "video", "width": 1920, "height": 1080, "fps": 23.976023976023978, "avgFps": 23.976023976023978, "bitDepth": 8, "aspectRatio": "16:9" },
+          { "index": 1, "codec": "dts", "profile": "DTS-HD MA", "language": "jpn", "default": true, "original": true, "type": "audio", "channels": 2, "channelLayout": "stereo", "sampleRate": 48000 },
+          { "index": 2, "codec": "dts", "profile": "DTS-HD MA", "language": "eng", "dub": true, "type": "audio", "channels": 6, "channelLayout": "5.1(side)", "sampleRate": 48000 },
+          { "index": 3, "codec": "hdmv_pgs_subtitle", "language": "eng", "default": true, "type": "subtitle" }
+        ]
+      }
+    }
   ]
 }

@@ -4,10 +4,13 @@ ok   Late.Bloomers.2006.1080p.BluRay.Remux.AVC.DTS-HD.MA.5.1-NY +nfo
 ok   Whos Coming For Christmas-2026-720p-WEBRip-YTS.GG-YTS.BZ +nfo
 ok   Resident.Evil.2026.1080p.MA.WEB-DL.H264.SDR.DDP.Atmos.5.1.English.--HONE
 ok   [SubsPlease] Frieren - 12 (1080p)
+ok   Death.Note.S01.Dual.Audio.1080p.BluRay.REMUX.AVC.DTS-HD.MA +nfo
 ok   Movie.2020.1080p.BluRay.x264-GRP
 miss Old.Movie.1999.DVDRip.XviD-GRP
 Dark Matter (2024) S01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).nfo
 Dark Matter (2024) S01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).nzb
+Death.Note.S01.Dual.Audio.1080p.BluRay.REMUX.AVC.DTS-HD.MA.nfo
+Death.Note.S01.Dual.Audio.1080p.BluRay.REMUX.AVC.DTS-HD.MA.nzb
 Did.Someone.Happen.to.Mention.Me.S01E01.2026.2160p.NF.WEB-DL.H.265.DDP5.1-HHWEB.nfo
 Did.Someone.Happen.to.Mention.Me.S01E01.2026.2160p.NF.WEB-DL.H.265.DDP5.1-HHWEB.nzb
 Late.Bloomers.2006.1080p.BluRay.Remux.AVC.DTS-HD.MA.5.1-NY.nfo
@@ -17,3 +20,9 @@ Resident.Evil.2026.1080p.MA.WEB-DL.H264.SDR.DDP.Atmos.5.1.English.--HONE.nzb
 Whos Coming For Christmas-2026-720p-WEBRip-YTS.GG-YTS.BZ.nfo
 Whos Coming For Christmas-2026-720p-WEBRip-YTS.GG-YTS.BZ.nzb
 [SubsPlease] Frieren - 12 (1080p).nzb
+Death Note
+DEATH NOTE
+デスノート
+Тетрадь смерти
+Kuroi Busshitsu
+Dark Matter

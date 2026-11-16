@@ -1,0 +1,3 @@
+{"$schema":"https://example/anime-offline-database.jsonl.schema.json","lastUpdate":"2026-09-07"}
+{"sources":["https://myanimelist.net/anime/1535"],"title":"Death Note","type":"TV","episodes":37,"status":"FINISHED","synonyms":["DEATH NOTE","デスノート","Тетрадь смерти"]}
+{"sources":["https://myanimelist.net/anime/99999"],"title":"Kuroi Busshitsu","type":"OVA","episodes":1,"status":"FINISHED","synonyms":["Dark Matter"]}

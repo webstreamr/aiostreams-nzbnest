@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Export playable NZBs from an AIOStreams usenet library, each with an .nfo
-# built from its probed media info. See README.md.
+# built from its probed media info, plus .anime-titles for nzbnest-upload.sh.
+# See README.md.
 #
 #   AIOS_URL=... AIOS_USER=... AIOS_PASS=... AIOS_DATA=... ./aiostreams-export.sh <out-dir>
 #
@@ -226,6 +227,18 @@ fi
 CACHE="${AIOS_CACHE:-$AIOS_DATA/cache}"
 STATE="$OUT/.exported"
 mkdir -p "$OUT"; touch "$STATE"
+
+# Anime titles and synonyms, rebuilt when AIOStreams updates its database; a
+# failed read (e.g. mid-download, it is written in place) skips the rebuild.
+ANIME_DB="$AIOS_DATA/anime-database/manami-db.jsonl"
+if [ -s "$ANIME_DB" ] && [ "$ANIME_DB" -nt "$OUT/.anime-titles" ]; then
+  if jq -r '.title, (.synonyms // [])[] | strings' "$ANIME_DB" >"$OUT/.anime-titles.tmp" 2>/dev/null; then
+    mv "$OUT/.anime-titles.tmp" "$OUT/.anime-titles"
+  else
+    rm -f "$OUT/.anime-titles.tmp"; echo "anime titles not updated: unreadable $ANIME_DB" >&2
+  fi
+fi
+
 entries="$(rows)"
 [ -n "$entries" ] || exit 0
 
